@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Name of File: HomePage.html      -->
+<html>
+	<link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet" />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
+
+	<script src="./main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
+	<link rel="stylesheet" href="./styles.css" />
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Untitled Document</title>
+	</head>
+
+	<!--heading component-->
+	<div class="Heading">
+		<span class="HeadingText"> Meals</span>
+	</div>
+
+	<body class="back">
+		<!--Button component-->
+		<div
+			class="Button breakfastButtonPatientClass"
+			id="breakfastButtonPatient"
+			onclick='redirectToUploadPhotoPage("Breakfast")'
+		>
+			<span class="emogi">🍪</span>
+			<span class="ButtonText">Breakfast</span>
+		</div>
+
+		<!--Button component-->
+		<div
+			class="Button lunchButtonPatientClass"
+			id="lunchButtonPatient"
+			onclick='redirectToUploadPhotoPage("Lunch")'
+		>
+			<span class="emogi">🍲</span>
+			<span class="ButtonText">Lunch</span>
+		</div>
+
+		<!--Button component-->
+		<div
+			class="Button dinnerButtonPatientClass"
+			id="dinnerButtonPatientClass"
+			onclick='redirectToUploadPhotoPage("Dinner")'
+		>
+			<span class="emogi">🍽️</span>
+			<span class="ButtonText">Dinner</span>
+		</div>
+
+		<!--Nav bar Patient-->
+		<div class="NavBarPatient">
+			<i class="pill">💊</i>
+			<i class="cutlery">🍴</i>
+			<i class="walking">🏃🏻‍♂️</i>
+		</div>
+	</body>
+</html>
