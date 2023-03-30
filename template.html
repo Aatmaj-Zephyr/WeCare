@@ -5,7 +5,9 @@
 
 
     <script src="./main.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> 
+
+
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
     <link rel="stylesheet" href="./styles.css">
@@ -27,9 +29,9 @@
 
             <!--Nav bar Patient-->
             <div class="NavBarPatient">
-                <i class="pill">💊</i>
-                <i class="cutlery">🍴</i>
-                <i class="walking">🏃🏻‍♂️</i>
+                <i class="pill" onclick="redirectToMedicinePage()">💊</i>
+                <i class="cutlery" onclick="redirectToMealsPage()">🍴</i>
+                <i class="walking" onclick="redirectToExercisePage()">🏃🏻‍♂️</i>
             </div>
 
 	</body>

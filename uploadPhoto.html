@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<!-- Name of File: index.html      -->
+<!-- Name of File: uploadPhoto.html      -->
 <html>
-	<link href='https://fonts.googleapis.com/css?family=Asul' rel='stylesheet'>
+	<link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet" />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
 
-
-    <script src="./main.js"></script>
-	  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> 
-
+	<script src="./main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	
 
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
-    <link rel="stylesheet" href="./styles.css">
+	<link rel="stylesheet" href="./styles.css" />
 
 	<head>
 		<meta charset="utf-8" />
-		<title>Untitled Document</title>
+		<title>Upload Photo</title>
 	</head>
 
 	<body class="back">
-    
 		<!--heading component-->
 		<div class="Heading">
 			<span class="HeadingText"> Meals</span>
 		</div>
-    
-        <!--Button component-->
-		<div class="Button">
-			<span class="emogi">T</span>
-			<span class="ButtonText">Text</span>
+
+		<!--Button component-->
+		<div
+			class="Button midButton"
+			id="photoButtonPatient"
+			onclick="uploadPhoto()"
+		>
+			<span class="emogi">📷</span>
+			<span class="ButtonText">Upload Photo</span>
 		</div>
-        
+
 		<!--Nav bar Patient-->
 		<div class="NavBarPatient">
 			<i class="pill" onclick="redirectToMedicinePage()">💊</i>
 			<i class="cutlery" onclick="redirectToMealsPage()">🍴</i>
 			<i class="walking" onclick="redirectToExercisePage()">🏃🏻‍♂️</i>
 		</div>
-		
-
 	</body>
 </html>

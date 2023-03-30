@@ -19,7 +19,7 @@ border: 1px solid #000000;
 box-sizing: border-box;
 
 position: relative;
-width: 60%;
+width: 65%;
 height: 10%;
 
 background: #F8F8F8;
@@ -40,9 +40,10 @@ bottom: 0%;
 font-family: 'Open Sans';
 font-style: normal;
 font-weight: 400;
-font-size: 90px;
+font-size: 95px;
 line-height: 87px;
 letter-spacing: 0.03em;
+margin: 0%;
 
 color: #000000;
 
@@ -51,9 +52,9 @@ color: #000000;
 .ButtonText{
     /* Button Text */
 
-
+margin: 0%;
 position: relative;
-left: 20%;
+left: 15%;
 right: 0%;
 top: 21%;
 bottom: 0%;
@@ -69,6 +70,8 @@ letter-spacing: 0.03em;
 color: #000000;
 
 }
+
+
 .Heading{
     /* Rectangle 2 */
 
@@ -163,34 +166,35 @@ top: 11.54%;
 
 /*_______________ positions___________________*/
 
-.breakfastButtonPatientClass{
+.topButton{
     /* Breakfast button patient */
 
     position: absolute;
   
-    left: calc(50% - 60%/2);
+    left: calc(50% - 65%/2);
     top: 20.15%;
     bottom: 66.92%;
 }
-.lunchButtonPatientClass{
+.midButton{
   /* Lunch button patient */
 
 position: absolute;
 
-left: calc(50% - 60%/2);
+left: calc(50% - 65%/2);
 top: 43.6%;
 bottom: 43.47%;
 ;
 
 }
 
-.dinnerButtonPatientClass{
+.bottomButton{
     /* Dinner button patient */
 
 position: absolute;
 
-left: calc(50% - 60%/2);
+left: calc(50% - 65%/2);
 top: 66.92%;
 bottom: 20.15%;
 }
+
 

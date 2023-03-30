@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Name of File: HomePage.html      -->
+<!-- Name of File: MealsPage.html      -->
 <html>
 	<link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet" />
 	<link
@@ -8,7 +8,9 @@
 	/>
 
 	<script src="./main.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> 
+
+
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
 	<link rel="stylesheet" href="./styles.css" />
@@ -26,9 +28,9 @@
 	<body class="back">
 		<!--Button component-->
 		<div
-			class="Button breakfastButtonPatientClass"
+			class="Button topButton"
 			id="breakfastButtonPatient"
-			onclick='redirectToUploadPhotoPage("Breakfast")'
+			onclick='redirectTouploadPhoto("Breakfast")'
 		>
 			<span class="emogi">🍪</span>
 			<span class="ButtonText">Breakfast</span>
@@ -36,9 +38,9 @@
 
 		<!--Button component-->
 		<div
-			class="Button lunchButtonPatientClass"
+			class="Button midButton"
 			id="lunchButtonPatient"
-			onclick='redirectToUploadPhotoPage("Lunch")'
+			onclick='redirectTouploadPhoto("Lunch")'
 		>
 			<span class="emogi">🍲</span>
 			<span class="ButtonText">Lunch</span>
@@ -46,9 +48,9 @@
 
 		<!--Button component-->
 		<div
-			class="Button dinnerButtonPatientClass"
-			id="dinnerButtonPatientClass"
-			onclick='redirectToUploadPhotoPage("Dinner")'
+			class="Button bottomButton"
+			id="bottomButton"
+			onclick='redirectTouploadPhoto("Dinner")'
 		>
 			<span class="emogi">🍽️</span>
 			<span class="ButtonText">Dinner</span>
@@ -56,9 +58,9 @@
 
 		<!--Nav bar Patient-->
 		<div class="NavBarPatient">
-			<i class="pill">💊</i>
-			<i class="cutlery">🍴</i>
-			<i class="walking">🏃🏻‍♂️</i>
+			<i class="pill" onclick="redirectToMedicinePage()">💊</i>
+			<i class="cutlery" onclick="redirectToMealsPage()">🍴</i>
+			<i class="walking" onclick="redirectToExercisePage()">🏃🏻‍♂️</i>
 		</div>
 	</body>
 </html>
