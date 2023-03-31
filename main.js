@@ -6,13 +6,14 @@ window.addEventListener("load", (event) => {
 });
 
 function doPageTasks() {
+    console.log("You are now in "+window.location.pathname)
     //segeregate tasks according to the page address
     switch (window.location.pathname) {
-        case "./homePage.html":
+        case "/homePage.html":
             homePageTasks();
-        case "./uploadPhoto.html":
+        case "/uploadPhoto.html":
             uploadPhotoTasks();
-        case "./mealsPage.html":
+        case "/mealsPage.html":
             mealsPageTasks();
     }
 }
@@ -47,6 +48,7 @@ function homePageTasks() {
 
 function mealsPageTasks() {
     console.log("You are now in meals page");
+    checkMealsColor();
 }
 
 function uploadPhotoTasks() {
@@ -72,20 +74,33 @@ function redirectToMealsPage() {
 function redirectToExercisePage() {
     window.location.href = "exercisePage.html";
 }
-function uploadPhoto() {
-    //choose photo from input and upload to firebase storage
-    choosePhoto();
-  
 
-    //update database to true
 
+
+function checkMealsColor(){
+
+    if(localStorage.getItem("Breakfast")){
+        console.log("Breakfast is taken")
+        document.getElementById("breakfastButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+    if(localStorage.getItem("Lunch")){
+        console.log("Lunch is taken")
+        document.getElementById("lunchButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+    if(localStorage.getItem("Dinner")){
+        console.log("Dinner is taken")
+        document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
 }
 
-function choosePhoto(a) {
+function uploadPhoto(a) {
+ //choose photo from input and upload to firebase storage then update firebase database and redirect to meals page
+
     // Create a file input element
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = "image/*";
+    fileInput.capture = "environment";
 
     // Listen for file input changes
     fileInput.addEventListener("change", (event) => {
@@ -105,9 +120,34 @@ function choosePhoto(a) {
         storageRef.put(file).then((snapshot) => {
             console.log('Uploaded file', snapshot);
         });
+
+        //update firebase to set current meal true
+        mealTaken(localStorage.getItem("currentMeal"));
+
+        
+
+        //wait till file is uploaded (2 seconds) 
+        setTimeout(() => {
+            //redirect to meals page
+            redirectToMealsPage();
+        },2000)
+        
+
     });
 
     // Trigger a click event on the file input element
     fileInput.click();
 
+}
+
+function mealTaken(meal){
+    //update database and local storage
+
+    //set the in database value to true 
+    //future scope for every user do  ('users/' + userId)
+    var database = firebase.database();
+    firebase.database().ref("Meal/"+meal).set(true);
+
+    //set local storage value to true
+    localStorage.setItem(meal, true);
 }
