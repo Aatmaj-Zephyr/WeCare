@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Name of File: exercisePage.html      -->
+<!-- Name of File: medicinePage.html      -->
 <html>
 	<link href="https://fonts.googleapis.com/css?family=Asul" rel="stylesheet" />
 	<link
@@ -8,8 +8,8 @@
 	/>
 
 	<script src="./main.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-	
+	  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script> 
+
 
 	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js "></script>
@@ -17,23 +17,43 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title>Upload Video of Exercise</title>
+		<title>Untitled Document</title>
 	</head>
 
+	<!--heading component-->
+	<div class="Heading">
+		<span id="heading" class="HeadingText"> Medicine</span>
+	</div>
+
 	<body class="back">
-		<!--heading component-->
-		<div class="Heading">
-			<span id="heading" class="HeadingText"> Exercise</span>
+		<!--Button component-->
+		<div
+			class="Button topButton"
+			id="morningButtonPatient"
+			onclick='redirectToMedicineCheck("Morning")'
+		>
+			<span class="emogi">💊</span>
+			<span class="ButtonText">Morning</span>
 		</div>
 
 		<!--Button component-->
 		<div
 			class="Button midButton"
-			id="uploadVideoExercise"
-			onclick="uploadVideo()"
+			id="afternoonButtonPatient"
+			onclick='redirectToMedicineCheck("Afternoon")'
 		>
-			<span class="emogi">📷</span>
-			<span class="ButtonText">Upload Video</span>
+			<span class="emogi">💊</span>
+			<span class="ButtonText">Afternoon</span>
+		</div>
+
+		<!--Button component-->
+		<div
+			class="Button bottomButton"
+			id="nightButtonPatient"
+			onclick='redirectToMedicineCheck("Night")'
+		>
+			<span class="emogi">💊</span>
+			<span class="ButtonText">Night</span>
 		</div>
 
 		<!--Nav bar Patient-->

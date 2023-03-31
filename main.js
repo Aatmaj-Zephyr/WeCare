@@ -11,10 +11,23 @@ function doPageTasks() {
     switch (window.location.pathname) {
         case "/homePage.html":
             homePageTasks();
+            break;
         case "/uploadPhoto.html":
             uploadPhotoTasks();
+            break;
         case "/mealsPage.html":
             mealsPageTasks();
+            break;
+        case "/exercisePage.html":
+            exercisePageTasks();
+            break;
+        case "/medicinePage.html":
+            medicinePageTasks();
+            break;
+        case "/medicineCheckPage.html":
+            medicineCheckPageTasks();
+            break;
+        
     }
 }
 
@@ -53,8 +66,35 @@ function mealsPageTasks() {
 
 function uploadPhotoTasks() {
     console.log("You are now in upload photo page");
-
+    changeHeadingMeal();
 }
+
+function exercisePageTasks(){
+    console.log("You are now in exercise page");
+}
+
+function medicinePageTasks(){
+    console.log("You are now in medicine page");
+    checkMedicineColor();
+}
+
+function medicineCheckPageTasks(){
+    console.log("You are now in medicine check page");
+    changeHeadingMedicine();
+}
+
+function changeHeadingMedicine(){
+    /* Setting the heading of the page to the current medicine time. */
+    console.log(localStorage.getItem("currentMedicineTime"));
+    document.getElementById("heading").innerHTML = localStorage.getItem("currentMedicineTime");
+}
+
+function changeHeadingMeal(){
+   /* Setting the heading of the page to the current meal. */
+    console.log(localStorage.getItem("currentMeal"));
+    document.getElementById("heading").innerHTML = localStorage.getItem("currentMeal");
+}
+
 
 function redirectTouploadPhoto(a) {
     console.log("function redirectTouploadPhoto() called with parameter " + a);
@@ -94,6 +134,24 @@ function checkMealsColor() {
     if (localStorage.getItem("Dinner")) {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+}
+
+
+function checkMedicineColor() {
+
+    
+    if (localStorage.getItem("Morning")) {
+        console.log("Morning is taken")
+        document.getElementById("morningButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+    if (localStorage.getItem("Afternoon")) {
+        console.log("Afternoon is taken")
+        document.getElementById("afternoonButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+    if (localStorage.getItem("Night")) {
+        console.log("Night is taken")
+        document.getElementById("nightButtonPatient").style.backgroundColor = "#B7FFBA";
     }
 }
 
@@ -173,7 +231,15 @@ function uploadVideo(a) {
 
 }
 function exerciseDone(){
-    // do something
+   //update database and local storage
+
+    //set the in database value to true 
+    //future scope for every user do  ('users/' + userId)
+    var database = firebase.database();
+    firebase.database().ref("Exercise").set(true);
+
+    //set local storage value to true
+    localStorage.setItem(exercise, true);
 }
 
 function mealTaken(meal) {
@@ -186,4 +252,21 @@ function mealTaken(meal) {
 
     //set local storage value to true
     localStorage.setItem(meal, true);
+}
+
+function redirectToMedicineCheck(medicine){
+    localStorage.setItem("currentMedicineTime", medicine); //can be Morning Afternoon Night
+    window.location.href = "medicineCheckPage.html"
+}
+
+function allPillsTaken(){
+    var database = firebase.database();
+    var currentMedicine = localStorage.getItem("currentMedicineTime");
+    firebase.database().ref("Medicine" +currentMedicine).set(true);
+
+    //set local storage value to true
+    localStorage.setItem(currentMedicine, true);
+
+    //needs feedback for button press but not for now
+    redirectToHomePage();
 }
