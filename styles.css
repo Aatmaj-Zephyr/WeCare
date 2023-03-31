@@ -162,6 +162,13 @@ top: 11.54%;
 
 
 }
+.medicineImg{
+    position: relative;
+    width:100%;
+    height:40%;
+    left:0%;
+    top:15%;
+}
 
 
 /*_______________ positions___________________*/
