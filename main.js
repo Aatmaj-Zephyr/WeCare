@@ -85,14 +85,14 @@ function medicineCheckPageTasks(){
 
 function changeHeadingMedicine(){
     /* Setting the heading of the page to the current medicine time. */
-    console.log(localStorage.getItem("currentMedicineTime"));
-    document.getElementById("heading").innerHTML = localStorage.getItem("currentMedicineTime");
+    console.log(sessionStorage.getItem("currentMedicineTime"));
+    document.getElementById("heading").innerHTML = sessionStorage.getItem("currentMedicineTime");
 }
 
 function changeHeadingMeal(){
    /* Setting the heading of the page to the current meal. */
-    console.log(localStorage.getItem("currentMeal"));
-    document.getElementById("heading").innerHTML = localStorage.getItem("currentMeal");
+    console.log(sessionStorage.getItem("currentMeal"));
+    document.getElementById("heading").innerHTML = sessionStorage.getItem("currentMeal");
 }
 
 
@@ -100,7 +100,7 @@ function redirectTouploadPhoto(a) {
     console.log("function redirectTouploadPhoto() called with parameter " + a);
 
     //save a to local storage
-    localStorage.setItem("currentMeal", a);
+    sessionStorage.setItem("currentMeal", a);
     window.location.href = "uploadPhoto.html";
 }
 function redirectToMedicinePage() {
@@ -123,15 +123,15 @@ function redirectToHomePage(){
 
 function checkMealsColor() {
 
-    if (localStorage.getItem("Breakfast")) {
+    if (sessionStorage.getItem("Breakfast")) {
         console.log("Breakfast is taken")
         document.getElementById("breakfastButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (localStorage.getItem("Lunch")) {
+    if (sessionStorage.getItem("Lunch")) {
         console.log("Lunch is taken")
         document.getElementById("lunchButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (localStorage.getItem("Dinner")) {
+    if (sessionStorage.getItem("Dinner")) {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
     }
@@ -141,15 +141,15 @@ function checkMealsColor() {
 function checkMedicineColor() {
 
     
-    if (localStorage.getItem("Morning")) {
+    if (sessionStorage.getItem("Morning")) {
         console.log("Morning is taken")
         document.getElementById("morningButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (localStorage.getItem("Afternoon")) {
+    if (sessionStorage.getItem("Afternoon")) {
         console.log("Afternoon is taken")
         document.getElementById("afternoonButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (localStorage.getItem("Night")) {
+    if (sessionStorage.getItem("Night")) {
         console.log("Night is taken")
         document.getElementById("nightButtonPatient").style.backgroundColor = "#B7FFBA";
     }
@@ -173,7 +173,7 @@ function uploadPhoto(a) {
 
         // Create a unique filename for the uploaded image fetch from local storage
 
-        const filename = localStorage.getItem("currentMeal") + ".jpeg"
+        const filename = sessionStorage.getItem("currentMeal") + ".jpeg"
 
         // Create a reference to the storage location in Firebase Storage.
         const storageRef = firebase.storage().ref().child('photos/' + filename);
@@ -182,7 +182,7 @@ function uploadPhoto(a) {
         storageRef.put(file).then((snapshot) => {
             console.log('Uploaded file', snapshot);
             //update firebase to set current meal true
-            mealTaken(localStorage.getItem("currentMeal"));
+            mealTaken(sessionStorage.getItem("currentMeal"));
             redirectToHomePage();
         });
 
@@ -239,7 +239,7 @@ function exerciseDone(){
     firebase.database().ref("Exercise").set(true);
 
     //set local storage value to true
-    localStorage.setItem(exercise, true);
+    sessionStorage.setItem(exercise, true);
 }
 
 function mealTaken(meal) {
@@ -251,21 +251,21 @@ function mealTaken(meal) {
     firebase.database().ref("Meal/" + meal).set(true);
 
     //set local storage value to true
-    localStorage.setItem(meal, true);
+    sessionStorage.setItem(meal, true);
 }
 
 function redirectToMedicineCheck(medicine){
-    localStorage.setItem("currentMedicineTime", medicine); //can be Morning Afternoon Night
+    sessionStorage.setItem("currentMedicineTime", medicine); //can be Morning Afternoon Night
     window.location.href = "medicineCheckPage.html"
 }
 
 function allPillsTaken(){
     var database = firebase.database();
-    var currentMedicine = localStorage.getItem("currentMedicineTime");
+    var currentMedicine = sessionStorage.getItem("currentMedicineTime");
     firebase.database().ref("Medicine" +currentMedicine).set(true);
 
     //set local storage value to true
-    localStorage.setItem(currentMedicine, true);
+    sessionStorage.setItem(currentMedicine, true);
 
     //needs feedback for button press but not for now
     redirectToHomePage();
