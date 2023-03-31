@@ -6,7 +6,7 @@ window.addEventListener("load", (event) => {
 });
 
 function doPageTasks() {
-    console.log("You are now in "+window.location.pathname)
+    console.log("You are now in " + window.location.pathname)
     //segeregate tasks according to the page address
     switch (window.location.pathname) {
         case "/homePage.html":
@@ -75,26 +75,30 @@ function redirectToExercisePage() {
     window.location.href = "exercisePage.html";
 }
 
+function redirectToHomePage(){
+    window.location.href = "homePage.html";
+}
 
 
-function checkMealsColor(){
 
-    if(localStorage.getItem("Breakfast")){
+function checkMealsColor() {
+
+    if (localStorage.getItem("Breakfast")) {
         console.log("Breakfast is taken")
         document.getElementById("breakfastButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if(localStorage.getItem("Lunch")){
+    if (localStorage.getItem("Lunch")) {
         console.log("Lunch is taken")
         document.getElementById("lunchButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if(localStorage.getItem("Dinner")){
+    if (localStorage.getItem("Dinner")) {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
     }
 }
 
 function uploadPhoto(a) {
- //choose photo from input and upload to firebase storage then update firebase database and redirect to meals page
+    //choose photo from input and upload to firebase storage then update firebase database and redirect to meals page
 
     // Create a file input element
     const fileInput = document.createElement("input");
@@ -111,7 +115,7 @@ function uploadPhoto(a) {
 
         // Create a unique filename for the uploaded image fetch from local storage
 
-        const filename = localStorage.getItem("currentMeal")+".jpeg"
+        const filename = localStorage.getItem("currentMeal") + ".jpeg"
 
         // Create a reference to the storage location in Firebase Storage.
         const storageRef = firebase.storage().ref().child('photos/' + filename);
@@ -119,19 +123,10 @@ function uploadPhoto(a) {
         // Upload the file to Firebase Storage.
         storageRef.put(file).then((snapshot) => {
             console.log('Uploaded file', snapshot);
+            //update firebase to set current meal true
+            mealTaken(localStorage.getItem("currentMeal"));
+            redirectToHomePage();
         });
-
-        //update firebase to set current meal true
-        mealTaken(localStorage.getItem("currentMeal"));
-
-        
-
-        //wait till file is uploaded (2 seconds) 
-        setTimeout(() => {
-            //redirect to meals page
-            redirectToMealsPage();
-        },2000)
-        
 
     });
 
@@ -140,13 +135,54 @@ function uploadPhoto(a) {
 
 }
 
-function mealTaken(meal){
+function uploadVideo(a) {
+    //choose photo from input and upload to firebase storage then update firebase database and redirect to meals page
+
+    // Create a file input element
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "video/*";
+    fileInput.capture = "environment";
+
+    // Listen for file input changes
+    fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        // Do something with the selected file
+        console.log("Selected file:", file);
+        console.log(fileInput.value)
+
+        // Create a unique filename for the uploaded image fetch from local storage
+
+        const filename = "Exercise"+ ".mp4"
+
+        // Create a reference to the storage location in Firebase Storage.
+        const storageRef = firebase.storage().ref().child('videos/' + filename);
+
+        // Upload the file to Firebase Storage.
+        storageRef.put(file).then((snapshot) => {
+            console.log('Uploaded file', snapshot);
+            //update firebase to set current meal true
+            exerciseDone()
+            redirectToHomePage();
+        });
+
+    });
+
+    // Trigger a click event on the file input element
+    fileInput.click();
+
+}
+function exerciseDone(){
+    // do something
+}
+
+function mealTaken(meal) {
     //update database and local storage
 
     //set the in database value to true 
     //future scope for every user do  ('users/' + userId)
     var database = firebase.database();
-    firebase.database().ref("Meal/"+meal).set(true);
+    firebase.database().ref("Meal/" + meal).set(true);
 
     //set local storage value to true
     localStorage.setItem(meal, true);
