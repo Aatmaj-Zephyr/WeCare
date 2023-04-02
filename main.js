@@ -6,25 +6,27 @@ window.addEventListener("load", (event) => {
 });
 
 function doPageTasks() {
-    console.log("You are now in " + window.location.pathname)
+    
     //segeregate tasks according to the page address
-    switch (window.location.pathname) {
-        case "/homePage.html":
+    var pageIdentifier = document.getElementById("pageIdentifier").innerHTML;
+    console.log("You are now in " + pageIdentifier)
+    switch (pageIdentifier) {
+        case "homePage":
             homePageTasks();
             break;
-        case "/uploadPhoto.html":
+        case "uploadPhoto":
             uploadPhotoTasks();
             break;
-        case "/mealsPage.html":
+        case "mealsPage":
             mealsPageTasks();
             break;
-        case "/exercisePage.html":
+        case "exercisePage":
             exercisePageTasks();
             break;
-        case "/medicinePage.html":
+        case "medicinePage":
             medicinePageTasks();
             break;
-        case "/medicineCheckPage.html":
+        case "medicineCheckPage":
             medicineCheckPageTasks();
             break;
         
