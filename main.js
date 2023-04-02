@@ -80,6 +80,8 @@ function medicinePageTasks(){
 
 function medicineCheckPageTasks(){
     console.log("You are now in medicine check page");
+    document.getElementById("tickBox").innerHTML = "⬜️";
+    checkTickBox();
     changeHeadingMedicine();
 }
 
@@ -134,6 +136,17 @@ function checkMealsColor() {
     if (sessionStorage.getItem("Dinner")) {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
+    }
+   
+}
+
+function checkTickBox() {
+
+   
+    if (sessionStorage.getItem(sessionStorage.getItem("currentMedicineTime"))) {
+
+        console.log("medicine is taken")
+        document.getElementById("tickBox").innerHTML = "✅";
     }
 }
 
@@ -255,6 +268,7 @@ function mealTaken(meal) {
 }
 
 function redirectToMedicineCheck(medicine){
+    console.log("redirecting to medicine check")
     sessionStorage.setItem("currentMedicineTime", medicine); //can be Morning Afternoon Night
     window.location.href = "medicineCheckPage.html"
 }
@@ -267,6 +281,14 @@ function allPillsTaken(){
     //set local storage value to true
     sessionStorage.setItem(currentMedicine, true);
 
-    //needs feedback for button press but not for now
+    document.getElementById("tickBox").innerHTML = "✅";
+    //wait for feedback 1.5 seconds
+    setTimeout('', 50000);
+
+    setTimeout(function () {
+        //needs feedback for button press but not for now
     redirectToHomePage();
+    }, 1000);
+    
+
 }

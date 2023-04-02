@@ -170,6 +170,59 @@ top: 11.54%;
     top:15%;
 }
 
+.logo{
+/* WeCare (1) 1 */
+
+position: relative;
+width: 80%;
+left: 10%;
+top: 15%;
+
+border: 1px solid #000000;
+}
+
+.motto{
+    /* Care for your loved ones, wherever you are...​ */
+
+position: absolute;
+width: 80%;
+height: 10%;
+left: 10%;
+top: 75%;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 200;
+font-size: 60px;
+line-height: 60px;
+text-align: center;
+
+color: #000000;
+
+}
+.scrollbarOuter{
+    /* Rectangle 3 */
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 80%;
+height: 2%;
+left: 10%;
+top: 65%;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.checkBox{
+    position: absolute;
+    
+    width: 40%;
+    height: 40%;
+}
 
 /*_______________ positions___________________*/
 
