@@ -127,15 +127,15 @@ function redirectToHomePage(){
 
 function checkMealsColor() {
 
-    if (sessionStorage.getItem("Breakfast")) {
+    if (sessionStorage.getItem("Breakfast")=="true") {
         console.log("Breakfast is taken")
         document.getElementById("breakfastButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (sessionStorage.getItem("Lunch")) {
+    if (sessionStorage.getItem("Lunch")=="true") {
         console.log("Lunch is taken")
         document.getElementById("lunchButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (sessionStorage.getItem("Dinner")) {
+    if (sessionStorage.getItem("Dinner")=="true") {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
     }
@@ -156,15 +156,15 @@ function checkTickBox() {
 function checkMedicineColor() {
 
     
-    if (sessionStorage.getItem("Morning")) {
+    if (sessionStorage.getItem("Morning")=="true") {
         console.log("Morning is taken")
         document.getElementById("morningButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (sessionStorage.getItem("Afternoon")) {
+    if (sessionStorage.getItem("Afternoon")=="true") {
         console.log("Afternoon is taken")
         document.getElementById("afternoonButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-    if (sessionStorage.getItem("Night")) {
+    if (sessionStorage.getItem("Night")=="true") {
         console.log("Night is taken")
         document.getElementById("nightButtonPatient").style.backgroundColor = "#B7FFBA";
     }
@@ -278,19 +278,21 @@ function redirectToMedicineCheck(medicine){
 function allPillsTaken(){
     var database = firebase.database();
     var currentMedicine = sessionStorage.getItem("currentMedicineTime");
-    firebase.database().ref("Medicine" +currentMedicine).set(true);
+    database.ref("Medicine/" +currentMedicine).set(true).then(() =>{
 
     //set local storage value to true
     sessionStorage.setItem(currentMedicine, true);
 
     document.getElementById("tickBox").innerHTML = "✅";
-    //wait for feedback 1.5 seconds
-    setTimeout('', 50000);
-
+    
+    
+    //wait to show chckbox turning green
     setTimeout(function () {
         //needs feedback for button press but not for now
     redirectToHomePage();
     }, 1000);
+
+});
     
 
 }
