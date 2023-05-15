@@ -217,7 +217,23 @@ background: #D9D9D9;
 border: 1px solid #000000;
 border-radius: 10px;
 }
+.scrollbarInner{
+     /* Rectangle 3 */
 
+
+box-sizing: border-box;
+
+position: relative;
+width: 0%;
+height: 100%;
+left: 0%;
+padding: none;
+margin: 0%;
+
+background: #006cf9;
+border: 0px solid #000000;
+border-radius: 10px;
+}
 .checkBox{
     position: absolute;
     

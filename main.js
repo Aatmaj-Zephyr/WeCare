@@ -15,6 +15,10 @@ function doPageTasks() {
     var pageIdentifier = document.getElementById("pageIdentifier").innerHTML;
     console.log("You are now in " + pageIdentifier)
     switch (pageIdentifier) {
+        case "index":
+            indexPageTasks();
+            break;
+        
         case "homePage":
             homePageTasks();
             break;
@@ -61,6 +65,11 @@ function initializeFirebase() {
 }
 
 
+function indexPageTasks() {
+    console.log("You are now in index page");
+    moveProgressBar();
+
+}
 function homePageTasks() {
     console.log("You are now in home page");
 }
@@ -325,4 +334,24 @@ function getCrossIcon(){
 function getBlankIcon(){
     //returns blank icon
     return "⬜️";
+}
+
+function moveProgressBar(){
+    //move progress bar for 5 seconds i.e. change width from 0 to 100 gradually in 5 seconds the redirect to home page
+
+
+    var progressBar = document.getElementById('scrollbar');
+    var width = 0;
+    var increment = 100 / 100; // Increment by 1% each time (100% / 100 steps)
+    var interval = setInterval(function() {
+      if (width >= 100) { //100 as in 100% width
+        clearInterval(interval); // Stop the interval when width reaches 100
+        redirectToHomePage(); // Redirect to home page
+      
+      } else {
+        width += increment;
+        progressBar.style.width = width + '%';
+      }
+    },50); // Run the interval every 50 milliseconds (0.05 seconds)
+  
 }
