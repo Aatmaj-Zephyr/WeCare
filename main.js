@@ -1,5 +1,9 @@
 
 
+/* This code is adding an event listener to the window object that listens for the "load" event. Once
+the page has finished loading, it calls the `initialize()` and `doPageTasks()` functions. The
+`initialize()` function initializes Firebase, and the `doPageTasks()` function performs tasks
+specific to the current page based on the `pageIdentifier` variable. */
 window.addEventListener("load", (event) => {
     initialize();
     doPageTasks();
@@ -80,9 +84,13 @@ function medicinePageTasks(){
     checkMedicineColor();
 }
 
+/**
+ * The function performs tasks related to the medicine check page, such as updating a tick box and
+ * changing the page heading.
+ */
 function medicineCheckPageTasks(){
     console.log("You are now in medicine check page");
-    document.getElementById("tickBox").innerHTML = "⬜️";
+    document.getElementById("tickBox").innerHTML = getBlankIcon(); 
     checkTickBox();
     changeHeadingMedicine();
 }
@@ -100,6 +108,12 @@ function changeHeadingMeal(){
 }
 
 
+/**
+ * The function redirects to the "uploadPhoto.html" page and saves a parameter to local storage.
+ * @param a - The parameter "a" is a variable that represents the current meal being uploaded. It is
+ * passed as an argument to the function "redirectTouploadPhoto". The function saves the value of "a"
+ * to the local storage using the "setItem" method of the "sessionStorage" object. It
+ */
 function redirectTouploadPhoto(a) {
     console.log("function redirectTouploadPhoto() called with parameter " + a);
 
@@ -139,23 +153,21 @@ function checkMealsColor() {
         console.log("Dinner is taken")
         document.getElementById("dinerButtonPatient").style.backgroundColor = "#B7FFBA";
     }
-   
+
 }
 
 function checkTickBox() {
 
-   
     if (sessionStorage.getItem(sessionStorage.getItem("currentMedicineTime"))) {
 
         console.log("medicine is taken")
-        document.getElementById("tickBox").innerHTML = "✅";
+        document.getElementById("tickBox").innerHTML = getTickIcon();
     }
 }
 
 
 function checkMedicineColor() {
 
-    
     if (sessionStorage.getItem("Morning")=="true") {
         console.log("Morning is taken")
         document.getElementById("morningButtonPatient").style.backgroundColor = "#B7FFBA";
@@ -245,6 +257,9 @@ function uploadVideo(a) {
     fileInput.click();
 
 }
+/**
+ * The function updates the database and local storage to mark the completion of an exercise.
+ */
 function exerciseDone(){
    //update database and local storage
 
@@ -283,7 +298,7 @@ function allPillsTaken(){
     //set local storage value to true
     sessionStorage.setItem(currentMedicine, true);
 
-    document.getElementById("tickBox").innerHTML = "✅";
+    document.getElementById("tickBox").innerHTML = getTickIcon();
     
     
     //wait to show chckbox turning green
@@ -295,4 +310,19 @@ function allPillsTaken(){
 });
     
 
+}
+
+function getTickIcon(){
+    //returns tick icon
+    return "✅";
+}
+
+function getCrossIcon(){
+    //returns cross icon
+    return "❌";
+}
+
+function getBlankIcon(){
+    //returns blank icon
+    return "⬜️";
 }
