@@ -275,7 +275,7 @@ function exerciseDone(){
     //set the in database value to true 
     //future scope for every user do  ('users/' + userId)
     var database = firebase.database();
-    firebase.database().ref("Exercise").set(true);
+    database.ref("Exercise").set(true);
 
     //set local storage value to true
     sessionStorage.setItem(exercise, true);
@@ -287,7 +287,7 @@ function mealTaken(meal) {
     //set the in database value to true 
     //future scope for every user do  ('users/' + userId)
     var database = firebase.database();
-    firebase.database().ref("Meal/" + meal).set(true);
+    database.ref("Meal/" + meal).set(true);
 
     //set local storage value to true
     sessionStorage.setItem(meal, true);
